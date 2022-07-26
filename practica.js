@@ -1,119 +1,174 @@
 //Calculadora
-let cal = 0;
 let num1 = 0;
 let num2 = 0;
-while (cal <= 5) {
-	cal = parseInt(
-		prompt(`----Calculadora----\n 
-1. Sumar
-2. Restar
-3. Multiplicar
-4. Dividir
-5. Porcentaje
-6. Hacer una Tabla
-7. Salir `)
-	);
-	if (cal == 1) {
-		while (true) {
-			for (let i = 1; i <= 2; i++) {
-				num1 = parseInt(prompt("Ingrese numero :"));
-				num2 = num2 + num1;
-			}
-			opc = parseInt(
-				prompt(
-					`Resultado = ${num2}\n1. Seguir sumando\n2. Nueva suma\n3. Volver al menu`
-				)
-			);
-			if (opc == 2) {
-				num2 = 0;
-			} else if (opc == 3) {
-				break;
-			}
-		}
-	} else if (cal == 2) {
-		while (true) {
-			num1 = parseInt(prompt("Ingrese numero :"));
-			num2 = parseInt(prompt("Ingrese numero :"));
-			opc = parseInt(
-				prompt(`Resultado = ${num1 - num2}\n1. Nueva resta\n2. Volver al menu`)
-			);
-			if (opc == 1) {
-				num2 = 0;
-			} else if (opc == 2) {
-				break;
-			}
-		}
-	} else if (cal == 3) {
-		while (true) {
-			num1 = parseInt(prompt("Ingrese numero :"));
-			num2 = parseInt(prompt("Ingrese numero :"));
-			opc = parseInt(
-				prompt(
-					`Resultado = ${num1 * num2}\n1. Nueva multicacion\n2. Volver al menu`
-				)
-			);
-			if (opc == 1) {
-				num2 = 0;
-			} else if (opc == 2) {
-				break;
-			}
-			1;
-		}
-	} else if (cal == 4) {
-		while (true) {
-			num1 = parseInt(prompt("Ingrese numero :"));
-			num2 = parseInt(prompt("Ingrese numero :"));
-			opc = parseInt(
-				prompt(
-					`Resultado = ${num1 / num2}\n1. Nueva divicion\n2. Volver al menu`
-				)
-			);
-			if (opc == 1) {
-				num2 = 0;
-			} else if (opc == 2) {
-				break;
-			}
-		}
-	} else if (cal == 5) {
-		while (true) {
-			num1 = parseInt(prompt("Ingrese numero :"));
-			num2 = parseInt(prompt("Ingrese porcentaje :"));
-			opc = parseInt(
-				prompt(
-					`El ${num2}% de ${num1} es = ${
-						(num1 * num2) / 100
-					}\n1. Nueva porcentaje\n2. Volver al menu`
-				)
-			);
-			if (opc == 1) {
-				num2 = 0;
-			} else if (opc == 2) {
-				break;
-			}
-		}
-	} else if (cal == 6) {
-		while (true) {
-			let tabla = parseInt(
-				prompt("Ingrese hasta cuento se va a crear la tabla : ")
-			);
-			num1 = parseInt(prompt("Ingrese numero :"));
 
-			for (let i = 1; i <= tabla; i++) {
-				console.log(`${num1} X ${i} = ${num1 * i}`);
-			}
-			opc = parseInt(
-				prompt(
-					`La tabla lo podes encontrar en Consola\n1. Nueva tabla\n2. Volver al menu`
-				)
-			);
-			if (opc == 1) {
-				num2 = 0;
-			} else if (opc == 2) {
-				break;
-			}
-		}
+function menu() {
+	let opciones = parseInt(
+		prompt(
+			`Bienvenido\nQue herramientas queres usar ?\n1.Calculadora\n2.Generador de tablas\n3.Sacar tu promedio\n4.Numero par o impar\n5.Salir`
+		)
+	);
+	if (opciones == 1) {
+		calculardora();
+	} else if (opciones == 2) {
+		tabla();
+	} else if (opciones == 3) {
+		calificacion();
+	} else if (opciones == 4) {
+		parImpar();
 	} else {
-		cal = parseInt(prompt("Seguro que desea salir?"));
+		alert("Hasta luego");
 	}
 }
-alert("Hasta luego...");
+
+function calculardora() {
+	let opciones = parseInt(
+		prompt(
+			"Calculadora\n1.Sumar\n2.Restar\n3.Multiplicar\n4.Dividir\n5.Porcertaje\n6.Volver al menu"
+		)
+	);
+	function operaciones(num1, num2, opciones) {
+		switch (opciones) {
+			case 1:
+				return num1 + num2;
+				break;
+			case 2:
+				return num1 - num2;
+				break;
+			case 3:
+				return num1 * num2;
+				break;
+			case 4:
+				return num1 / num2;
+				break;
+			case 5:
+				return (num1 * num2) / 100;
+			default:
+				return 0;
+				break;
+		}
+	}
+	while (opciones != 666) {
+		switch (opciones) {
+			case 1:
+				num1 = parseInt(prompt("Ingrese Numero :"));
+
+				num2 = parseInt(prompt("Ingrese Numero :"));
+				alert(`${num1} + ${num2} = ${operaciones(num1, num2, opciones)} `);
+				seguir = parseInt(
+					prompt("1.Serguir con el calculo\n2.Cambiar tipo de calculo")
+				);
+				if (seguir == 2) {
+					calculardora();
+				}
+				break;
+			case 2:
+				num1 = parseInt(prompt("Ingrese Numero :"));
+
+				num2 = parseInt(prompt("Ingrese Numero :"));
+				alert(`${num1} - ${num2} = ${operaciones(num1, num2, opciones)} `);
+				seguir = parseInt(
+					prompt("1.Serguir con el calculo\n2.Cambiar tipo de calculo")
+				);
+				if (seguir == 2) {
+					calculardora();
+				}
+				break;
+			case 3:
+				num1 = parseInt(prompt("Ingrese Numero :"));
+
+				num2 = parseInt(prompt("Ingrese Numero :"));
+				alert(`${num1} x ${num2} = ${operaciones(num1, num2, opciones)} `);
+				seguir = parseInt(
+					prompt("1.Serguir con el calculo\n2.Cambiar tipo de calculo")
+				);
+				if (seguir == 2) {
+					calculardora();
+				}
+				break;
+			case 4:
+				num1 = parseInt(prompt("Ingrese Numero :"));
+
+				num2 = parseInt(prompt("Ingrese Numero :"));
+				alert(`${num1} / ${num2} = ${operaciones(num1, num2, opciones)} `);
+				seguir = parseInt(
+					prompt("1.Serguir con el calculo\n2.Cambiar tipo de calculo")
+				);
+				if (seguir == 2) {
+					calculardora();
+				}
+				break;
+			case 5:
+				num1 = parseInt(prompt("Ingrese Numero :"));
+
+				num2 = parseInt(prompt("Ingrese Numero :"));
+				alert(`${num1} % ${num2} = ${operaciones(num1, num2, opciones)} `);
+				seguir = parseInt(
+					prompt("1.Serguir con el calculo\n2.Cambiar tipo de calculo")
+				);
+				if (seguir == 2) {
+					calculardora();
+				}
+				break;
+			case 6:
+				menu();
+				break;
+
+			default:
+				break;
+		}
+	}
+}
+function tabla() {
+	while (true) {
+		let tabla = parseInt(
+			prompt("Ingrese hasta cuento se va a crear la tabla : ")
+		);
+		num1 = parseInt(prompt("Ingrese numero :"));
+
+		for (let i = 1; i <= tabla; i++) {
+			console.log(`${num1} X ${i} = ${num1 * i}`);
+		}
+		let opc = parseInt(
+			prompt(
+				`La tabla lo podes encontrar en Consola\n1. Nueva tabla\n2. Volver al menu`
+			)
+		);
+		if (opc == 2) {
+			menu();
+		}
+	}
+}
+function calificacion() {
+	let nota = 0;
+	let acum = 0;
+	let prom = 0;
+	let cantNotas = parseInt(prompt("Ingrese la cantidad de notas que desea"));
+	for (let i = 0; i < cantNotas; i++) {
+		nota = parseInt(prompt(`Ingrese la nota ${i + 1}`));
+		acum = acum + nota;
+	}
+	prom = acum / cantNotas;
+
+	alert("La suma total es " + acum);
+	alert("El promedio es " + prom);
+	let opc = parseInt(prompt(`1. Nueva Promedio\n2. Volver al menu`));
+	if (opc == 2) {
+		menu();
+	}
+}
+function parImpar() {
+	while (true) {
+		num1 = parseInt(prompt("Ingrese el Numero que deseas saber :"));
+		if (num1 % 2 == 0) {
+			alert("El número " + num1 + " es par");
+		} else {
+			alert("El número " + num1 + " es impar");
+		}
+		let opc = parseInt(prompt(`1. Seguir sacando\n2. Volver al menu`));
+		if (opc == 2) {
+			menu();
+		}
+	}
+}
+menu();
